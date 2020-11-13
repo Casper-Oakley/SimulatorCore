@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { SimObject } from "../SimObject";
 import { SimRobotDrivetrain } from "./SimRobotDrivetrain";
 import {
@@ -69,6 +70,7 @@ export class SimRobot extends SimObject {
 
       // Set up the loader
       this._meshLoader = new GLTFLoader();
+      this._meshLoader.setDRACOLoader(new DRACOLoader());
       this._meshLoader.load(
         spec.customMesh.filePath,
         (gltf) => {
